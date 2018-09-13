@@ -5,13 +5,19 @@
         <div class="description">
             {{overview}}
         </div>
+        <MovieImage :filename="posterPath" ></MovieImage>
     </article>
 </template>
 
 <script>
+import MovieImage from './MovieImage';
+
 export default {
   name: 'MovieListItem',
-  props: ['id', 'title', 'releasedOn', 'overview']
+  components: {
+    MovieImage
+  },
+  props: ['id', 'title', 'releasedOn', 'overview', 'posterPath']
 };
 </script>
 

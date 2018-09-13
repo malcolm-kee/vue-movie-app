@@ -6,6 +6,7 @@
             :title="movie.title"
             :releasedOn="movie.release_date"
             :overview="movie.overview"
+            :posterPath="movie.poster_path"
             :key="movie.id"
         >
         </MovieListItem>

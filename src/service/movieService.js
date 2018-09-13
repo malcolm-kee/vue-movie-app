@@ -7,12 +7,14 @@ const apiKey = 'a460784a8c5d04c46594768a48309ba0';
 const baseUrl = 'https://api.themoviedb.org/3';
 
 axios.defaults.baseURL = baseUrl;
-axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+axios.defaults.headers.common['Content-Type'] = `application/json`;
+
+export const getConfig = () =>
+  axios('/configuration', {
+    params: { api_key: apiKey }
+  }).then(result => result.data);
 
 export const getPopularMovieList = () =>
   axios('/discover/movie', {
-    headers: {
-      Authorization: `Bearer ${accessToken}`
-    },
     params: { sort_by: 'popularity.desc', api_key: apiKey }
   }).then(result => result.data);
