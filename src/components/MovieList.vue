@@ -4,16 +4,16 @@
         <h1>Popular Movies</h1>
         <LoadingIcon v-if="isLoading"></LoadingIcon>
         <div class="movie-list">
-        <MovieListItem 
-            v-for="movie in movies" 
-            :id="movie.id"
-            :title="movie.title"
-            :releasedOn="movie.release_date"
-            :overview="movie.overview"
-            :posterPath="movie.poster_path"
-            :key="movie.id"
-        >
-        </MovieListItem>
+          <MovieListItem 
+              v-for="movie in movies" 
+              :id="movie.id"
+              :title="movie.title"
+              :releasedOn="movie.release_date"
+              :overview="movie.overview"
+              :posterPath="movie.poster_path"
+              :key="movie.id"
+          >
+          </MovieListItem>
         </div>
     </div>
 </template>
@@ -62,5 +62,12 @@ h1 {
 }
 .movie-list {
   padding: 0 8px;
+}
+
+@supports (display: grid) {
+  .movie-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
 }
 </style>

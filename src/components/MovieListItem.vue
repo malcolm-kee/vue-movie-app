@@ -1,6 +1,6 @@
 <template>
-  <router-link :to="detailsUrl">
-      <article class="movie-list-item">
+  <router-link :to="detailsUrl" class="movie-list-item">
+      <article>
           <div class="movie-details">
               <h1 class="title">{{title}}</h1>
               <h2 class="movie-release-date">released: {{releasedOn}}</h2>
@@ -43,10 +43,13 @@ a:focus {
 }
 
 .movie-list-item {
+  border-bottom: 1px solid #bdbdbd;
+  margin: 8px 0;
+}
+
+article {
   display: flex;
   text-align: left;
-  margin: 8px 0;
-  border-bottom: 1px solid #bdbdbd;
 }
 
 .title {
