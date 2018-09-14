@@ -1,5 +1,9 @@
 <template>
     <div>
+        <Navbar />
+        <h1>Popular Movies</h1>
+        <LoadingIcon v-if="isLoading"></LoadingIcon>
+        <div class="movie-list">
         <MovieListItem 
             v-for="movie in movies" 
             :id="movie.id"
@@ -10,27 +14,41 @@
             :key="movie.id"
         >
         </MovieListItem>
+        </div>
     </div>
 </template>
 
 <script>
 import { getPopularMovieList } from '../service/movieService';
 import MovieListItem from './MovieListItem';
+import Navbar from './Navbar';
+import LoadingIcon from './LoadingIcon';
 
 export default {
   name: 'MovieList',
   components: {
-    MovieListItem
+    MovieListItem,
+    Navbar,
+    LoadingIcon
   },
   data() {
     return {
-      isLoading: true,
-      movies: []
+      isLoading: true
     };
   },
+  computed: {
+    movies() {
+      return this.$store.getters.getPopularMovies;
+    }
+  },
   created() {
+    if (this.movies.length > 0) {
+      this.isLoading = false;
+      return;
+    }
+
     getPopularMovieList().then(({ results }) => {
-      this.movies = results;
+      this.$store.commit('setPopularMovies', { popularMovies: results });
       this.isLoading = false;
     });
   }
@@ -38,4 +56,11 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  margin: 0;
+  padding: 8px;
+}
+.movie-list {
+  padding: 0 8px;
+}
 </style>
