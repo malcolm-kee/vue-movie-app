@@ -5,17 +5,10 @@
 </template>
 
 <script>
-import { getConfig } from './service/movieService';
-
 export default {
   name: 'App',
   created() {
-    getConfig().then(result => {
-      this.$store.commit('setImageMetaData', {
-        baseUrl: result.images.secure_base_url,
-        posterSizes: result.images.poster_sizes
-      });
-    });
+    this.$store.dispatch('meta/loadMetaData');
   }
 };
 </script>

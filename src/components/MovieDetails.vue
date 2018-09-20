@@ -40,7 +40,7 @@ export default {
   },
   computed: {
     details() {
-      return this.$store.getters.getMovieDetails(this.$route.params.id);
+      return this.$store.getters['movie/getMovieDetails'](this.$route.params.id);
     }
   },
   created() {

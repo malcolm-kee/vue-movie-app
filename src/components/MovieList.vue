@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import { getPopularMovieList } from '../service/movieService';
 import MovieListItem from './MovieListItem';
 import Navbar from './Navbar';
@@ -37,9 +38,9 @@ export default {
     };
   },
   computed: {
-    movies() {
-      return this.$store.getters.getPopularMovies;
-    }
+    ...mapGetters('movie', {
+      movies: 'getPopularMovies'
+    })
   },
   created() {
     if (this.movies.length > 0) {
@@ -47,10 +48,7 @@ export default {
       return;
     }
 
-    getPopularMovieList().then(({ results }) => {
-      this.$store.commit('setPopularMovies', { popularMovies: results });
-      this.isLoading = false;
-    });
+    this.$store.dispatch('movie/initPopularMoviesList').then(() => (this.isLoading = false));
   }
 };
 </script>
