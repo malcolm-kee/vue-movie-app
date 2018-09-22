@@ -1,4 +1,4 @@
-import { getPopularMovieList } from '../../service/movieService';
+import { getPopularMovieList, getMovieDetails } from '../../service/movieService';
 
 /* shape: {
     popularMovieIds: number[],
@@ -21,12 +21,22 @@ const mutations = {
       (result, movie) => Object.assign({}, result, { [movie.id]: movie }),
       state.movieDetails
     );
+  },
+  setMovieDetails(state, payload) {
+    state.movieDetails[payload.movie.id] = Object.assign({}, state.movieDetails[payload.movie.id], payload.movie);
   }
 };
 
 const actions = {
   initPopularMoviesList({ commit }) {
     return getPopularMovieList().then(({ results }) => commit('setPopularMovies', { popularMovies: results }));
+  },
+  initMovieDetails({ commit }, { movieId }) {
+    console.log('initMovieDetails', { movieId });
+    return getMovieDetails(movieId).then(movie => {
+      console.log('getMovieDetails', { movie });
+      commit('setMovieDetails', { movie });
+    });
   }
 };
 

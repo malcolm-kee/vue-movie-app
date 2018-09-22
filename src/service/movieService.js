@@ -18,3 +18,8 @@ export const getPopularMovieList = () =>
   axios('/discover/movie', {
     params: { sort_by: 'popularity.desc', api_key: apiKey }
   }).then(result => result.data);
+
+export const getMovieDetails = movieId =>
+  axios(`/movie/${movieId}`, {
+    params: { api_key: apiKey }
+  }).then(result => result.data);

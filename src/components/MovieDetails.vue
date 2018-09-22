@@ -10,6 +10,8 @@
             </div>
             <div class="content">
               <dl>
+                <dt v-if="hasGenre">Genres</dt>
+                <dd v-if="hasGenre">{{genres}}</dd>
                 <dt>Published Date</dt>
                 <dd>{{details.release_date}}</dd>
               </dl>
@@ -41,9 +43,16 @@ export default {
   computed: {
     details() {
       return this.$store.getters['movie/getMovieDetails'](this.$route.params.id);
+    },
+    hasGenre() {
+      return this.details && this.details.genres && this.details.genres.length > 0;
+    },
+    genres() {
+      return this.hasGenre ? this.details.genres.map(genre => genre.name).join(', ') : '';
     }
   },
   created() {
+    this.$store.dispatch('movie/initMovieDetails', { movieId: this.$route.params.id });
     if (this.details !== undefined) {
       this.isLoading = false;
     }
@@ -80,5 +89,18 @@ h2 {
 .overview {
   text-align: justify;
   margin: 0;
+}
+
+dt {
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+dt:first-child {
+  margin-top: 0;
+}
+
+dd {
+  margin-bottom: 8px;
 }
 </style>
