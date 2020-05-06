@@ -9,5 +9,6 @@ export const store = new Vuex.Store({
   modules: {
     movie,
     meta
-  }
+  },
+  strict: true
 });

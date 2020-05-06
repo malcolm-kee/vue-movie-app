@@ -35,11 +35,6 @@ export default {
     Navbar,
     MovieImage
   },
-  data() {
-    return {
-      isLoading: true
-    };
-  },
   computed: {
     details() {
       return this.$store.getters['movie/getMovieDetails'](this.$route.params.id);
@@ -49,13 +44,13 @@ export default {
     },
     genres() {
       return this.hasGenre ? this.details.genres.map(genre => genre.name).join(', ') : '';
+    },
+    isLoading() {
+      return !this.details;
     }
   },
   created() {
     this.$store.dispatch('movie/initMovieDetails', { movieId: this.$route.params.id });
-    if (this.details !== undefined) {
-      this.isLoading = false;
-    }
   }
 };
 </script>

@@ -20,7 +20,6 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import { getPopularMovieList } from '../service/movieService';
 import MovieListItem from './MovieListItem';
 import Navbar from './Navbar';
 import LoadingIcon from './LoadingIcon';
