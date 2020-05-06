@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import HelloWorld from '../components/HelloWorld';
-import MovieList from '../components/MovieList';
-import MovieDetails from '../components/MovieDetails';
-import About from '../components/About';
+import About from '../components/About.vue';
+import HelloWorld from '../components/HelloWorld.vue';
+import MovieDetails from '../components/MovieDetails.vue';
+import MovieList from '../components/MovieList.vue';
 
 Vue.use(Router);
 

@@ -6,7 +6,8 @@
         <h1>About this site</h1>
         <p>
           This site is created by
-          <a href="http://malcolmkee.com">Malcolm Kee</a> using <a href="https://vuejs.org/">VueJS</a> as frontend.
+          <a href="http://malcolmkee.com">Malcolm Kee</a> using
+          <a href="https://vuejs.org/">VueJS</a> as frontend.
         </p>
         <p>
           It uses the
@@ -18,17 +19,18 @@
   </div>
 </template>
 
-<script>
-import Navbar from './Navbar';
-import Container from './Container';
+<script lang="ts">
+import Vue from 'vue';
+import Navbar from './Navbar.vue';
+import Container from './Container.vue';
 
-export default {
+export default Vue.extend({
   name: 'About',
   components: {
     Container,
     Navbar,
   },
-};
+});
 </script>
 
 <style scoped>

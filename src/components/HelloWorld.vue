@@ -16,15 +16,16 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue';
 import Navbar from './Navbar';
 
-export default {
+export default Vue.extend({
   name: 'HelloWorld',
   components: {
     Navbar,
   },
-};
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

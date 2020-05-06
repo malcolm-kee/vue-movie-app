@@ -1,16 +1,18 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue';
+
+export default Vue.extend({
   name: 'App',
   created() {
     this.$store.dispatch('meta/loadMetaData');
-  }
-};
+  },
+});
 </script>
 
 <style>
