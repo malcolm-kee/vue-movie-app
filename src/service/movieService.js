@@ -1,25 +1,47 @@
-import axios from 'axios';
+import { createRequest } from 'xhfetch';
 
-const accessToken =
-  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhNDYwNzg0YThjNWQwNGM0NjU5NDc2OGE0ODMwOWJhMCIsInN1YiI6IjVhNTg3Njg3OTI1MTQxMDIxODAwNWY0YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.7gTiTNKYPP5BzW4wV0V1jdLj69UPEXhjkPIY6LGueYQ';
 const apiKey = 'a460784a8c5d04c46594768a48309ba0';
 
 const baseUrl = 'https://api.themoviedb.org/3';
 
-axios.defaults.baseURL = baseUrl;
-axios.defaults.headers.common['Content-Type'] = `application/json`;
-
 export const getConfig = () =>
-  axios('/configuration', {
-    params: { api_key: apiKey }
-  }).then(result => result.data);
+  createRequest(`${baseUrl}/configuration?api_key=${apiKey}`, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .fetch()
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      throw res;
+    });
 
 export const getPopularMovieList = () =>
-  axios('/discover/movie', {
-    params: { sort_by: 'popularity.desc', api_key: apiKey }
-  }).then(result => result.data);
+  createRequest(`${baseUrl}/discover/movie?sort_by=popularity.desc&api_key=${apiKey}`, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .fetch()
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      throw res;
+    });
 
 export const getMovieDetails = movieId =>
-  axios(`/movie/${movieId}`, {
-    params: { api_key: apiKey }
-  }).then(result => result.data);
+  createRequest(`${baseUrl}/movie/${movieId}?api_key=${apiKey}`, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .fetch()
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      throw res;
+    });
