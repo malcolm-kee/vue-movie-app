@@ -1,16 +1,16 @@
 <template>
-    <div class="loading-icon" role="progressbar">
-        <div class="container">
-            <svg viewBox="22 22 44 44">
-                <circle fill="none" cx="44" cy="44" r="16" strokeWidth="13" />
-            </svg>
-        </div>
+  <div class="loading-icon" role="progressbar">
+    <div class="container">
+      <svg viewBox="22 22 44 44">
+        <circle fill="none" cx="44" cy="44" r="16" strokeWidth="13" />
+      </svg>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'LoadingIcon'
+  name: 'LoadingIcon',
 };
 </script>
 

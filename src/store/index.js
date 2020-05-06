@@ -8,7 +8,7 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   modules: {
     movie,
-    meta
+    meta,
   },
-  strict: true
+  strict: true,
 });

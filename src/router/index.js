@@ -12,22 +12,22 @@ export default new Router({
     {
       path: '/',
       name: 'HelloWorld',
-      component: HelloWorld
+      component: HelloWorld,
     },
     {
       path: '/popular',
       name: 'MovieList',
-      component: MovieList
+      component: MovieList,
     },
     {
       path: '/about',
       name: 'About',
-      component: About
+      component: About,
     },
     {
       path: '/movie/:id',
       name: 'MovieDetails',
-      component: MovieDetails
-    }
-  ]
+      component: MovieDetails,
+    },
+  ],
 });

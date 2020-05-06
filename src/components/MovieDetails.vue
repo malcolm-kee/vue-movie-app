@@ -1,39 +1,43 @@
 <template>
-    <div>
-        <Navbar showBack="true" />
-        <main>
-          <LoadingIcon v-if="isLoading"></LoadingIcon>
-          <div v-if="details !== undefined">
-            <h1>{{details.title}}</h1>
-            <div class="image-container">
-              <MovieImage :filename="details.poster_path" />
-            </div>
-            <div class="content">
-              <dl>
-                <dt v-if="hasGenre">Genres</dt>
-                <dd v-if="hasGenre">{{genres}}</dd>
-                <dt>Published Date</dt>
-                <dd>{{details.release_date}}</dd>
-              </dl>
-              <h2>Overview</h2>
-              <p class="overview">{{details.overview}}</p>
-            </div>
+  <div>
+    <Navbar showBack="true" />
+    <main>
+      <Container>
+        <LoadingIcon v-if="isLoading"></LoadingIcon>
+        <div v-if="details !== undefined">
+          <h1>{{ details.title }}</h1>
+          <div class="image-container">
+            <MovieImage :filename="details.poster_path" />
           </div>
-        </main>
-    </div>
+          <div class="content">
+            <dl>
+              <dt v-if="hasGenre">Genres</dt>
+              <dd v-if="hasGenre">{{ genres }}</dd>
+              <dt>Published Date</dt>
+              <dd>{{ details.release_date }}</dd>
+            </dl>
+            <h2>Overview</h2>
+            <p class="overview">{{ details.overview }}</p>
+          </div>
+        </div>
+      </Container>
+    </main>
+  </div>
 </template>
 
 <script>
 import LoadingIcon from './LoadingIcon';
 import Navbar from './Navbar';
 import MovieImage from './MovieImage';
+import Container from './Container';
 
 export default {
   name: 'MovieDetails',
   components: {
+    Container,
     LoadingIcon,
     Navbar,
-    MovieImage
+    MovieImage,
   },
   computed: {
     details() {
@@ -47,11 +51,11 @@ export default {
     },
     isLoading() {
       return !this.details;
-    }
+    },
   },
   created() {
     this.$store.dispatch('movie/initMovieDetails', { movieId: this.$route.params.id });
-  }
+  },
 };
 </script>
 
@@ -76,9 +80,18 @@ main {
   padding: 8px;
 }
 
+h1 {
+  margin: 0;
+  margin-bottom: 8px;
+}
+
 h2 {
   margin: 0;
   padding: 8px 0;
+}
+
+.content {
+  line-height: 1.5;
 }
 
 .overview {

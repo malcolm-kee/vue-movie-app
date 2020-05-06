@@ -1,14 +1,14 @@
 <template>
-    <button class="container" aria-label="back" tabindex="0" @click="$router.go(-1)" >
-        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
-            <path d="M30 16.5H11.74l8.38-8.38L18 6 6 18l12 12 2.12-2.12-8.38-8.38H30v-3z" fill="white" />
-        </svg>
-    </button>
+  <button class="container" aria-label="back" tabindex="0" @click="$router.go(-1)">
+    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+      <path d="M30 16.5H11.74l8.38-8.38L18 6 6 18l12 12 2.12-2.12-8.38-8.38H30v-3z" fill="white" />
+    </svg>
+  </button>
 </template>
 
 <script>
 export default {
-  name: 'BackIcon'
+  name: 'BackIcon',
 };
 </script>
 

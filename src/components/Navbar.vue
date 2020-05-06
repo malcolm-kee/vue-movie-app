@@ -1,23 +1,23 @@
 <template>
-    <div>
+  <div>
     <nav class="nav-bar">
-        <ul>
-          <li v-if="showBack">
-            <BackIcon></BackIcon>
-          </li>
-            <li>
-                <router-link to="/">Home</router-link>
-            </li>
-            <li>
-                <router-link to="/popular">Popular</router-link>
-            </li>
-            <li>
-                <router-link to="/about">About</router-link>
-            </li>
-        </ul>
+      <ul>
+        <li v-if="showBack">
+          <BackIcon></BackIcon>
+        </li>
+        <li>
+          <router-link to="/">Home</router-link>
+        </li>
+        <li>
+          <router-link to="/popular">Popular</router-link>
+        </li>
+        <li>
+          <router-link to="/about">About</router-link>
+        </li>
+      </ul>
     </nav>
     <div class="filler"></div>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -27,8 +27,8 @@ export default {
   name: 'Navbar',
   props: ['showBack'],
   components: {
-    BackIcon
-  }
+    BackIcon,
+  },
 };
 </script>
 
@@ -42,8 +42,8 @@ nav {
   padding: 4px;
   background: #6d1b7b;
   color: #fff;
-  box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.2),
-    0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 3px 3px -2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14),
+    0px 3px 3px -2px rgba(0, 0, 0, 0.12);
 }
 .filler {
   height: 56px;

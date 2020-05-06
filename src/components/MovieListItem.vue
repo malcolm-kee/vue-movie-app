@@ -1,17 +1,17 @@
 <template>
   <router-link :to="detailsUrl" class="movie-list-item">
-      <article>
-          <div class="movie-details">
-              <h1 class="title">{{title}}</h1>
-              <h2 class="movie-release-date">released: {{releasedOn}}</h2>
-              <div class="movie-description">
-                  {{overview}}
-              </div>
-          </div>
-          <div class="movie-image-container">
-              <MovieImage :filename="posterPath" imageSize="small" ></MovieImage>
-          </div>
-      </article>
+    <article>
+      <div class="movie-details">
+        <h1 class="title">{{ title }}</h1>
+        <h2 class="movie-release-date">released: {{ releasedOn }}</h2>
+        <div class="movie-description">
+          {{ overview }}
+        </div>
+      </div>
+      <div class="movie-image-container">
+        <MovieImage :filename="posterPath" imageSize="small"></MovieImage>
+      </div>
+    </article>
   </router-link>
 </template>
 
@@ -21,14 +21,14 @@ import MovieImage from './MovieImage';
 export default {
   name: 'MovieListItem',
   components: {
-    MovieImage
+    MovieImage,
   },
   props: ['id', 'title', 'releasedOn', 'overview', 'posterPath'],
   computed: {
     detailsUrl() {
       return `/movie/${this.id}`;
-    }
-  }
+    },
+  },
 };
 </script>
 

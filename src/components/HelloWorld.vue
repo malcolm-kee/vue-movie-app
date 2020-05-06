@@ -22,8 +22,8 @@ import Navbar from './Navbar';
 export default {
   name: 'HelloWorld',
   components: {
-    Navbar
-  }
+    Navbar,
+  },
 };
 </script>
 

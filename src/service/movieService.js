@@ -7,8 +7,8 @@ const baseUrl = 'https://api.themoviedb.org/3';
 export const getConfig = () =>
   createRequest(`${baseUrl}/configuration?api_key=${apiKey}`, {
     headers: {
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   })
     .fetch()
     .then(res => {
@@ -21,8 +21,8 @@ export const getConfig = () =>
 export const getPopularMovieList = () =>
   createRequest(`${baseUrl}/discover/movie?sort_by=popularity.desc&api_key=${apiKey}`, {
     headers: {
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   })
     .fetch()
     .then(res => {
@@ -35,8 +35,8 @@ export const getPopularMovieList = () =>
 export const getMovieDetails = movieId =>
   createRequest(`${baseUrl}/movie/${movieId}?api_key=${apiKey}`, {
     headers: {
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   })
     .fetch()
     .then(res => {

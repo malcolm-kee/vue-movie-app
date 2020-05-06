@@ -1,21 +1,21 @@
 <template>
-    <div>
-        <Navbar />
-        <h1>Popular Movies</h1>
-        <LoadingIcon v-if="isLoading"></LoadingIcon>
-        <div class="movie-list">
-          <MovieListItem 
-              v-for="movie in movies" 
-              :id="movie.id"
-              :title="movie.title"
-              :releasedOn="movie.release_date"
-              :overview="movie.overview"
-              :posterPath="movie.poster_path"
-              :key="movie.id"
-          >
-          </MovieListItem>
-        </div>
+  <div>
+    <Navbar />
+    <h1>Popular Movies</h1>
+    <LoadingIcon v-if="isLoading"></LoadingIcon>
+    <div class="movie-list">
+      <MovieListItem
+        v-for="movie in movies"
+        :id="movie.id"
+        :title="movie.title"
+        :releasedOn="movie.release_date"
+        :overview="movie.overview"
+        :posterPath="movie.poster_path"
+        :key="movie.id"
+      >
+      </MovieListItem>
     </div>
+  </div>
 </template>
 
 <script>
@@ -29,17 +29,17 @@ export default {
   components: {
     MovieListItem,
     Navbar,
-    LoadingIcon
+    LoadingIcon,
   },
   data() {
     return {
-      isLoading: true
+      isLoading: true,
     };
   },
   computed: {
     ...mapGetters('movie', {
-      movies: 'getPopularMovies'
-    })
+      movies: 'getPopularMovies',
+    }),
   },
   created() {
     if (this.movies.length > 0) {
@@ -48,7 +48,7 @@ export default {
     }
 
     this.$store.dispatch('movie/initPopularMoviesList').then(() => (this.isLoading = false));
-  }
+  },
 };
 </script>
 

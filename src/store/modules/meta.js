@@ -11,8 +11,8 @@ import { getConfig } from '../../service/movieService';
 const state = {
   image: {
     baseUrl: '',
-    posterSizes: []
-  }
+    posterSizes: [],
+  },
 };
 
 const getters = {
@@ -27,14 +27,14 @@ const getters = {
       size === 'small' ? 0 : size === 'large' ? posterSizes.length - 2 : Math.ceil(posterSizes.length / 2);
 
     return `${state.image.baseUrl}${state.image.posterSizes[imageSizeIndex]}`;
-  }
+  },
 };
 
 const mutations = {
   setImageMetaData(state, payload) {
     state.image.baseUrl = payload.baseUrl;
     state.image.posterSizes = payload.posterSizes;
-  }
+  },
 };
 
 const actions = {
@@ -42,10 +42,10 @@ const actions = {
     return getConfig().then(({ images }) => {
       commit('setImageMetaData', {
         baseUrl: images.secure_base_url,
-        posterSizes: images.poster_sizes
+        posterSizes: images.poster_sizes,
       });
     });
-  }
+  },
 };
 
 export const meta = {
@@ -53,5 +53,5 @@ export const meta = {
   state,
   getters,
   mutations,
-  actions
+  actions,
 };

@@ -1,5 +1,5 @@
 <template>
-    <img :src="imageUrl" />
+  <img :src="imageUrl" />
 </template>
 
 <script>
@@ -9,10 +9,9 @@ export default {
   computed: {
     imageUrl() {
       return this.$store.getters['meta/getMovieImageBaseUrl'](this.imageSize) + this.filename;
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

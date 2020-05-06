@@ -4,11 +4,11 @@ export const movie = {
   namespaced: true,
   state: {
     popularMovieIds: [],
-    movieDetails: {}
+    movieDetails: {},
   },
   getters: {
     getPopularMovies: state => state.popularMovieIds.map(movieId => state.movieDetails[movieId]),
-    getMovieDetails: state => movieId => state.movieDetails[movieId]
+    getMovieDetails: state => movieId => state.movieDetails[movieId],
   },
   mutations: {
     setPopularMovies(state, payload) {
@@ -21,9 +21,9 @@ export const movie = {
     setMovieDetails(state, payload) {
       state.movieDetails = {
         ...state.movieDetails,
-        [payload.movie.id]: payload.movie
+        [payload.movie.id]: payload.movie,
       };
-    }
+    },
   },
   actions: {
     initPopularMoviesList({ commit }) {
@@ -33,6 +33,6 @@ export const movie = {
       return getMovieDetails(movieId).then(movie => {
         commit('setMovieDetails', { movie });
       });
-    }
-  }
+    },
+  },
 };
