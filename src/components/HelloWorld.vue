@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import Navbar from './Navbar';
+import Navbar from './Navbar.vue';
 
 export default Vue.extend({
   name: 'HelloWorld',

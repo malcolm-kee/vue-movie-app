@@ -38,12 +38,14 @@
     "extends": [
       "plugin:vue/essential",
       "eslint:recommended",
-      "@vue/typescript"
+      "@vue/typescript/recommended"
     ],
     "parserOptions": {
       "parser": "@typescript-eslint/parser"
     },
-    "rules": {}
+    "rules": {
+      "@typescript-eslint/no-non-null-assertion": "off"
+    }
   },
   "browserslist": [
     "> 1%",

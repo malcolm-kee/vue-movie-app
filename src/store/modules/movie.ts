@@ -1,6 +1,8 @@
-import { getPopularMovieList, getMovieDetails } from '../../service/movieService';
+import { getMovieDetails, getPopularMovieList } from '@/service/movie.service';
+import type { Movie, MovieState, RootState } from '@/type';
+import type { Module } from "vuex";
 
-export const movie = {
+export const movie: Module<MovieState, RootState> = {
   namespaced: true,
   state: {
     popularMovieIds: [],
@@ -8,10 +10,10 @@ export const movie = {
   },
   getters: {
     getPopularMovies: state => state.popularMovieIds.map(movieId => state.movieDetails[movieId]),
-    getMovieDetails: state => movieId => state.movieDetails[movieId],
+    getMovieDetails: state => (movieId: number) => state.movieDetails[movieId],
   },
   mutations: {
-    setPopularMovies(state, payload) {
+    setPopularMovies(state, payload: {popularMovies: Movie[]}) {
       state.popularMovieIds = payload.popularMovies.map(movie => movie.id);
       state.movieDetails = payload.popularMovies.reduce(
         (result, movie) => Object.assign({}, result, { [movie.id]: movie }),

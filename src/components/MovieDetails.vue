@@ -25,13 +25,15 @@
   </div>
 </template>
 
-<script>
-import LoadingIcon from './LoadingIcon';
-import Navbar from './Navbar';
-import MovieImage from './MovieImage';
-import Container from './Container';
+<script lang="ts">
+import Vue from 'vue';
+import { Movie } from '../type';
+import LoadingIcon from './LoadingIcon.vue';
+import Navbar from './Navbar.vue';
+import MovieImage from './MovieImage.vue';
+import Container from './Container.vue';
 
-export default {
+export default Vue.extend({
   name: 'MovieDetails',
   components: {
     Container,
@@ -40,23 +42,23 @@ export default {
     MovieImage,
   },
   computed: {
-    details() {
+    details(): Movie | undefined {
       return this.$store.getters['movie/getMovieDetails'](this.$route.params.id);
     },
-    hasGenre() {
-      return this.details && this.details.genres && this.details.genres.length > 0;
+    hasGenre(): boolean {
+      return !!(this.details && this.details.genres && this.details.genres.length > 0);
     },
-    genres() {
-      return this.hasGenre ? this.details.genres.map(genre => genre.name).join(', ') : '';
+    genres(): string {
+      return this.hasGenre ? this.details!.genres.map(genre => genre.name).join(', ') : '';
     },
-    isLoading() {
+    isLoading(): boolean {
       return !this.details;
     },
   },
   created() {
     this.$store.dispatch('movie/initMovieDetails', { movieId: this.$route.params.id });
   },
-};
+});
 </script>
 
 <style scoped>
