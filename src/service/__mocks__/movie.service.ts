@@ -87,3 +87,5 @@ export const getPopularMovieList = () =>
   Promise.resolve({
     results: MOVIES,
   });
+
+export const getMovieDetails = (movieId: number) => Promise.resolve(MOVIES.find(movie => movie.id === movieId));

@@ -18,5 +18,11 @@ describe(`MovieApp`, () => {
     const $movieTitle = await helper.findByText('Bloodshot');
 
     expect($movieTitle).not.toBeNull();
+
+    fireEvent.click($movieTitle);
+
+    const $movieTitleInDetails = await helper.findByText('Bloodshot');
+
+    expect($movieTitleInDetails).not.toBeNull();
   });
 });

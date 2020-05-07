@@ -1,5 +1,7 @@
 # vue-movie-app
 
+[![Coverage Status](https://coveralls.io/repos/github/malcolm-kee/vue-movie-app/badge.svg?branch=master)](https://coveralls.io/github/malcolm-kee/vue-movie-app?branch=master)
+
 > A Vue.js project
 
 ## Build Setup
